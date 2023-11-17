@@ -13,7 +13,7 @@ const RandomQuote = () => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      margin: "auto", 
+      margin: "auto",
       marginTop: "250px",
       background: "#625ac4",
       width: "800px",
@@ -27,18 +27,35 @@ const RandomQuote = () => {
       }}>
         {quote.text}
       </Typography>
+
       <Divider sx={{ background: "white" }} />
+
       <Box sx={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        margin: "30px 0px"
+        display: 'flex', 
+        gap: '14px', 
+        marginBottom: '10px',
+        padding: '12px 16px'
       }}>
-        <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "500" }}>
-          {quote.author}
-        </Typography>
-        <Box sx={{ display: "flex", alignItems: "center", gap: "40px", marginLeft: "auto" }}>
+        <Box sx={{
+          width: '2000px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
+          width: 1,
+        }}>
+          <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "500" }}>
+            {quote.author}
+          </Typography>
+
+        </Box>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
+          justifyContent: 'flex-end',
+          alignItems: 'flex-end',
+          width: 1,
+        }}>
           <RefreshIcon />
         </Box>
       </Box>
