@@ -11,7 +11,7 @@ const RandomQuote = () => {
     const response = await fetch("https://type.fit/api/quotes");
     quotes = await response.json();
   }
-  
+
   //testing
   const [quote, setQuote] = useState({
     text: "Difficulties increase the nearer we get to the goal.",
@@ -28,34 +28,34 @@ const RandomQuote = () => {
 
   //share
   const twitter = () => {
-  const tweetText = `${quote.text} - ${quote.author.split(',')[0]}`;
-  const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+    const tweetText = `${quote.text} - ${quote.author.split(',')[0]}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
 
-  window.open(twitterUrl);
-};
+    window.open(twitterUrl);
+  };
 
   return (
     <>
       <Box
-      id="quote-box" 
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        margin: "auto",
-        marginTop: "250px",
-        background: "#625ac4",
-        width: "800px",
-        borderRadius: "15px"
-      }}>
-        <Box 
-        id="text"
+        id="quote-box"
         sx={{
-          width: '2000px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '10px',
-          width: 1,
+          display: "flex",
+          flexDirection: "column",
+          margin: "auto",
+          marginTop: "250px",
+          background: "#625ac4",
+          width: "800px",
+          borderRadius: "15px"
         }}>
+        <Box
+          id="text"
+          sx={{
+            width: '2000px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '10px',
+            width: 1,
+          }}>
           <Typography sx={{
             padding: "60px 110px",
             color: "white",
@@ -68,14 +68,14 @@ const RandomQuote = () => {
 
         <Divider sx={{ background: "white" }} />
 
-        <Box 
-        id="author"
-        sx={{
-          display: 'flex',
-          gap: '20px',
-          marginBottom: '10px',
-          padding: '20px 30px'
-        }}>
+        <Box
+          id="author"
+          sx={{
+            display: 'flex',
+            gap: '20px',
+            marginBottom: '10px',
+            padding: '20px 30px'
+          }}>
           <Box sx={{
             width: '2000px',
             display: 'flex',
@@ -84,7 +84,7 @@ const RandomQuote = () => {
             width: 1,
           }}>
             <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "500" }}>
-              {quote.author.split(',')[0]}
+              - {quote.author.split(',')[0]}
               {/* split to remove type.fit text from api */}
             </Typography>
 
@@ -96,14 +96,33 @@ const RandomQuote = () => {
             justifyContent: 'flex-end',
             alignItems: 'flex-end',
             width: 1,
-            
+
           }}>
-            <Box id="new-quote" onClick={() => { random() }} sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-              <RefreshIcon fontSize="large"/>
+            <Box
+              component="a"
+              id="new-quote"
+              href="#"
+              onClick={() => {
+                random();
+              }}
+              sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer', color: 'black' }}
+            >
+              <RefreshIcon fontSize="large" />
             </Box>
-             <Box id="tweet-quote"  onClick={() => { twitter() }} sx={{ fontSize:'large',display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-            <TwitterIcon fontSize="large" />
+            <Box
+              component="a"
+              href="twitter.com/intent/tweet"
+              target="_blank"
+              id="tweet-quote"
+              onClick={() => {
+                twitter();
+              }}
+              sx={{ fontSize: 'large', display: 'flex', alignItems: 'center', cursor: 'pointer', color: 'black'}}
+            >
+              <TwitterIcon fontSize="large" />
             </Box>
+
+
           </Box>
         </Box>
       </Box>
